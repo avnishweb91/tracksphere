@@ -1,0 +1,1 @@
+package com.tracksphere.application.location.dto; import java.time.Instant; import java.util.UUID; public record LocationResponse(UUID id,String vehicleId,double latitude,double longitude,Double accuracyMeters,Instant recordedAt){}

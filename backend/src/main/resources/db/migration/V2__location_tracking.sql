@@ -1,0 +1,2 @@
+CREATE TABLE locations (id UUID PRIMARY KEY, vehicle_id VARCHAR(100) NOT NULL, latitude DOUBLE PRECISION NOT NULL CHECK (latitude BETWEEN -90 AND 90), longitude DOUBLE PRECISION NOT NULL CHECK (longitude BETWEEN -180 AND 180), accuracy_meters DOUBLE PRECISION, recorded_at TIMESTAMPTZ NOT NULL, created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX idx_locations_vehicle_recorded_at ON locations(vehicle_id, recorded_at DESC);

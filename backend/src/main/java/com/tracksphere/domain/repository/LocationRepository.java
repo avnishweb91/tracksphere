@@ -1,0 +1,2 @@
+package com.tracksphere.domain.repository; import com.tracksphere.domain.model.Location; import org.springframework.data.jpa.repository.JpaRepository; import java.time.Instant; import java.util.*;
+public interface LocationRepository extends JpaRepository<Location,UUID>{ Optional<Location> findFirstByVehicleIdOrderByRecordedAtDesc(String vehicleId); List<Location> findByVehicleIdAndRecordedAtBetweenOrderByRecordedAtDesc(String vehicleId,Instant from,Instant to); List<Location> findTop100ByOrderByRecordedAtDesc(); }

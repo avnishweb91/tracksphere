@@ -1,0 +1,5 @@
+import { useEffect, useState } from 'react'
+import { Client } from '@stomp/stompjs'
+import { locationApi } from '../services/api'
+import type { Location } from '../types/auth'
+export function useLiveLocations() { const [locations, setLocations] = useState<Location[]>([]); const [connected, setConnected] = useState(false); useEffect(() => { locationApi.live().then(setLocations).catch(() => undefined); const base = (import.meta.env.VITE_API_URL ?? 'http://localhost:8080/api/v1').replace('/api/v1', '').replace(/^http/, 'ws'); const client = new Client({ brokerURL: `${base}/ws`, reconnectDelay: 5000, onConnect: () => { setConnected(true); client.subscribe('/topic/locations', message => { const incoming = JSON.parse(message.body) as Location; setLocations(current => [incoming, ...current.filter(item => item.vehicleId !== incoming.vehicleId)].slice(0, 100)); }); }, onWebSocketClose: () => setConnected(false) }); client.activate(); return () => { void client.deactivate() }; }, []); return { locations, connected } }
