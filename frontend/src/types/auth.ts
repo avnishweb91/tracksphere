@@ -4,3 +4,4 @@ export type LoginRequest = { email: string; password: string }
 export type RegisterRequest = LoginRequest & { firstName: string; lastName: string }
 export type Location = { id: string; vehicleId: string; latitude: number; longitude: number; accuracyMeters?: number; recordedAt: string }
 export type LocationRequest = Omit<Location, 'id'>
+export type AttendanceRecord = { id: string; userId: string; employeeName: string; email: string; clockIn: string; clockOut?: string; durationMinutes?: number }

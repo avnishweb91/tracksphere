@@ -1,0 +1,2 @@
+package com.tracksphere.domain.repository; import com.tracksphere.domain.model.AttendanceRecord; import org.springframework.data.jpa.repository.JpaRepository; import java.time.Instant; import java.util.*;
+public interface AttendanceRepository extends JpaRepository<AttendanceRecord,UUID>{ Optional<AttendanceRecord> findFirstByUserIdAndClockOutIsNullOrderByClockInDesc(UUID userId); List<AttendanceRecord> findByClockInBetweenOrderByClockInDesc(Instant from,Instant to); }

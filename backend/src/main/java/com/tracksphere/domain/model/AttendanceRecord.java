@@ -1,0 +1,3 @@
+package com.tracksphere.domain.model;
+import jakarta.persistence.*; import lombok.*; import java.time.Instant; import java.util.UUID;
+@Entity @Table(name="attendance_records") @Getter @NoArgsConstructor(access=AccessLevel.PROTECTED) public class AttendanceRecord { @Id private UUID id; @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="user_id",nullable=false) private User user; @Column(name="clock_in",nullable=false) private Instant clockIn; @Column(name="clock_out") private Instant clockOut; @Column(name="created_at",nullable=false,updatable=false) private Instant createdAt; public AttendanceRecord(User user){id=UUID.randomUUID();this.user=user;clockIn=Instant.now();createdAt=clockIn;} public void clockOut(){if(clockOut==null)clockOut=Instant.now();} }
