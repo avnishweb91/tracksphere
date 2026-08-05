@@ -1,0 +1,1 @@
+package com.tracksphere.domain.repository; import com.tracksphere.domain.model.Geofence; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface GeofenceRepository extends JpaRepository<Geofence,UUID>{ List<Geofence> findByActiveTrue(); }
