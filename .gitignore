@@ -2,5 +2,8 @@
 .vscode/
 **/target/
 **/.m2/
+**/node_modules/
+**/.npm-cache/
+**/dist/
 **/.env
 *.iml

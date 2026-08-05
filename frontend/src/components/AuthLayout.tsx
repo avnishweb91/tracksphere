@@ -1,0 +1,3 @@
+import { Box, Container, Paper, Typography } from '@mui/material'
+import type { PropsWithChildren } from 'react'
+export default function AuthLayout({ children }: PropsWithChildren) { return <Box sx={{ minHeight: '100vh', display: 'grid', placeItems: 'center', p: 2, background: 'linear-gradient(135deg, #eff6ff 0%, #f8fafc 55%, #ecfdf3 100%)' }}><Container maxWidth="sm"><Box sx={{ textAlign: 'center', mb: 3 }}><Typography variant="h4" color="primary">TrackSphere</Typography><Typography color="text.secondary">Enterprise tracking, in real time.</Typography></Box><Paper elevation={0} sx={{ p: { xs: 3, sm: 4 }, border: 1, borderColor: 'divider' }}>{children}</Paper></Container></Box> }
