@@ -1,0 +1,4 @@
+package com.tracksphere.domain.model;
+import jakarta.persistence.*; import lombok.*; import java.time.Instant; import java.util.UUID;
+@Entity @Table(name="refresh_tokens") @Getter @NoArgsConstructor(access=AccessLevel.PROTECTED)
+public class RefreshToken { @Id private UUID id; @Column(nullable=false,unique=true,length=128) private String token; @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="user_id",nullable=false) private User user; @Column(name="expires_at",nullable=false) private Instant expiresAt; @Column(nullable=false) private boolean revoked; @Column(name="created_at",nullable=false) private Instant createdAt; public RefreshToken(String token,User user,Instant expiresAt){id=UUID.randomUUID();this.token=token;this.user=user;this.expiresAt=expiresAt;createdAt=Instant.now();} public boolean isUsable(){return !revoked&&expiresAt.isAfter(Instant.now());} public void revoke(){revoked=true;} }

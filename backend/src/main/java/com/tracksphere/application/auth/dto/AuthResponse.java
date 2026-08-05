@@ -1,0 +1,1 @@
+package com.tracksphere.application.auth.dto; public record AuthResponse(String accessToken,String refreshToken,String tokenType,UserResponse user){ public AuthResponse(String access,String refresh,UserResponse user){this(access,refresh,"Bearer",user);} }

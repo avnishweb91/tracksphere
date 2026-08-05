@@ -1,0 +1,3 @@
+package com.tracksphere.interfaces.rest;
+import com.tracksphere.application.auth.*; import com.tracksphere.application.auth.dto.UserResponse; import com.tracksphere.domain.repository.UserRepository; import lombok.RequiredArgsConstructor; import org.springframework.security.core.annotation.AuthenticationPrincipal; import org.springframework.web.bind.annotation.*; import java.util.UUID;
+@RestController @RequestMapping("/api/v1/users") @RequiredArgsConstructor public class UserController { private final UserRepository users; private final UserMapper mapper; @GetMapping("/me") public UserResponse me(@AuthenticationPrincipal UUID id){return mapper.toResponse(users.findById(id).orElseThrow());} }

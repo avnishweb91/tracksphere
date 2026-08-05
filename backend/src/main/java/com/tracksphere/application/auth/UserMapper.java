@@ -1,0 +1,2 @@
+package com.tracksphere.application.auth; import com.tracksphere.application.auth.dto.UserResponse; import com.tracksphere.domain.model.User; import org.mapstruct.*;
+@Mapper(componentModel="spring") public interface UserMapper { @Mapping(target="roles",expression="java(user.getRoles().stream().map(com.tracksphere.domain.model.Role::getName).collect(java.util.stream.Collectors.toSet()))") UserResponse toResponse(User user); }
