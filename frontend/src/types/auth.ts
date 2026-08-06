@@ -5,3 +5,5 @@ export type RegisterRequest = LoginRequest & { firstName: string; lastName: stri
 export type Location = { id: string; vehicleId: string; latitude: number; longitude: number; accuracyMeters?: number; recordedAt: string }
 export type LocationRequest = Omit<Location, 'id'>
 export type AttendanceRecord = { id: string; userId: string; employeeName: string; email: string; clockIn: string; clockOut?: string; durationMinutes?: number }
+export type Notification = { id: string; title: string; message: string; severity: 'INFO' | 'WARNING' | 'CRITICAL'; createdAt: string; readAt?: string }
+export type SosRequest = { latitude?: number; longitude?: number; message?: string }

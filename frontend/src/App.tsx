@@ -5,4 +5,5 @@ import EmployeeDashboardPage from './pages/EmployeeDashboardPage'
 import AdminDashboardPage from './pages/AdminDashboardPage'
 import ReportsPage from './pages/ReportsPage'
 import ProtectedRoute from './components/ProtectedRoute'
-export default function App() { return <Routes><Route path="/login" element={<LoginPage/>}/><Route path="/register" element={<RegisterPage/>}/><Route element={<ProtectedRoute/>}><Route path="/dashboard" element={<EmployeeDashboardPage/>}/><Route path="/admin" element={<AdminDashboardPage/>}/><Route path="/reports" element={<ReportsPage/>}/></Route><Route path="*" element={<Navigate to="/dashboard" replace/>}/></Routes> }
+import AdminRoute from './components/AdminRoute'
+export default function App() { return <Routes><Route path="/login" element={<LoginPage/>}/><Route path="/register" element={<RegisterPage/>}/><Route element={<ProtectedRoute/>}><Route path="/dashboard" element={<EmployeeDashboardPage/>}/><Route path="/reports" element={<ReportsPage/>}/><Route element={<AdminRoute/>}><Route path="/admin" element={<AdminDashboardPage/>}/></Route></Route><Route path="*" element={<Navigate to="/dashboard" replace/>}/></Routes> }
